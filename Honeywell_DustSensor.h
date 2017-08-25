@@ -1,6 +1,6 @@
 /**
 	******************************************************************************
-	* File Name          : Honeywell_DustSensor.H
+	* File Name          : Honeywell_DustSensor.h
 	* Description        : This file contains the common defines of the application
 	******************************************************************************
 	*
