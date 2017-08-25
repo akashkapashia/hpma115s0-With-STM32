@@ -5,7 +5,7 @@
 	******************************************************************************
 	*
 	* COPYRIGHT(c) 2017 Akash kapashia
-       * Created by Akash kapashia
+        * Created by Akash kapashia
 	******************************************************************************
 */
  
@@ -20,7 +20,11 @@ uint16_t PM2_5=0;;
 uint16_t PM10 =0;
 
 
-
+/**
+  * @brief MX_USART_DUSTSENSOR_UART_Init.
+  * @param NONE.
+  * @retval None
+  */
  void MX_USART_DUSTSENSOR_UART_Init(void)
 {
 
@@ -41,6 +45,12 @@ uint16_t PM10 =0;
 
 }
 
+
+/**
+  * @brief start_Particle_Measure.
+  * @param NONE.
+  * @retval None.
+  */
 void start_Particle_Measure(void){
 	uint8_t meas_start_data[]={0x68,0x01,0x01,0x96};
  while(HAL_UART_GetState(&huart1_DustSensor)!= HAL_UART_STATE_READY);
@@ -55,6 +65,12 @@ void start_Particle_Measure(void){
  }
 }
 
+
+/**
+  * @brief Read_Particle_Measuring.
+  * @param NONE.
+  * @retval None.
+  */
 void Read_Particle_Measuring(){
 uint8_t Particle_Measure[]={0x68,0x01,0x4,0x93};
  while(HAL_UART_GetState(&huart1_DustSensor)!= HAL_UART_STATE_READY);
@@ -72,6 +88,13 @@ PM2_5 = Particle_Measure_Data[3] * 256 + Particle_Measure_Data[4];
 PM10 = Particle_Measure_Data[5] * 256 + Particle_Measure_Data[6];
 }
 
+
+
+/**
+  * @brief Stop_Particle_Measurement.
+  * @param NONE.
+  * @retval None.
+  */
 void Stop_Particle_Measurement(){
 	uint8_t meas_start_data[]={0x68,0x01,0x02,0x95};
  while(HAL_UART_GetState(&huart1_DustSensor)!= HAL_UART_STATE_READY);
@@ -86,6 +109,12 @@ void Stop_Particle_Measurement(){
  }
 	
 }
+
+/**
+  * @brief Stop_Auto_Send.
+  * @param NONE.
+  * @retval None.
+  */
 void Stop_Auto_Send()
 {
 		uint8_t meas_start_data[]={0x68,0x01,0x20,0x77};
@@ -100,6 +129,13 @@ void Stop_Auto_Send()
 	 while(1);
  }
 }
+
+
+/**
+  * @brief Enable_Auto_Send.
+  * @param NONE.
+  * @retval None.
+  */
 void Enable_Auto_Send()
 {
 		uint8_t meas_start_data[]={0x68,0x01,0x40,0x77};
